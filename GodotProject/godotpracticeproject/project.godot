@@ -10,10 +10,6 @@ config_version=5
 
 [application]
 
-config/name="MinseoGodotProject"
+config/name="GodotPracticeProject"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
-
-[rendering]
-
-renderer/rendering_method="forward_plus"
