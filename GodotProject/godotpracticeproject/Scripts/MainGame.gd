@@ -44,6 +44,7 @@ func FailedEvent():
 	if !_isStarted: return
 	_curStep = 0
 	emit_signal("Fail")
+	_isStarted = false
 	
 func SuccessEvent():
 	if !_isStarted: return

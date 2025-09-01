@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var hand: Node2D
+
 var stageInfo: StageInfo
 var game: MainGame
 
@@ -7,21 +9,27 @@ func _ready():
 	stageInfo = StageInfo.new()
 	stageInfo.title = "Test"
 	stageInfo.notes = [
-		[true, false, false, false, false],
-		[false, false, false, false, true],
-		[false, true, false, false, false],
-		[false, false, false, true, false]
+		[true, false, true, false, false],
+		[false, true, false, true, false],
+		[false, false, true, false, true],
+		[false, true, false, true, false],
+		[true, false, true, false, false],
+		[false, true, false, true, false],
+		[false, false, true, false, true],
+		[false, true, false, true, false],
+		[true, false, true, false, false],
 		]
 	game = MainGame.new(stageInfo)
 	game.Clear.connect(Clear)
 	game.Fail.connect(Fail)
 	game.Success.connect(Success)
+	
+	hand.SetView(stageInfo.notes)
 
 func _process(delta: float):
 	CheckInput()
 	game.Update()
 	
-	#todo: isStarted는 private으로 쓰기로 했잖아 차라리 getter를 만들어라
 	if !game._isStarted and game._playerInput[0] and game._playerInput[1] and game._playerInput[2] and game._playerInput[3] and game._playerInput[4]:
 		game.Start()
 		PrintCurStage(0)
@@ -41,6 +49,7 @@ func CheckInput():
 
 func Clear():
 	print("당신은 클리어하다")
+	hand.Clear_Test()
 	
 func Fail():
 	print("당신은 실패하다")
@@ -50,11 +59,7 @@ func Success(value: int):
 	PrintCurStage(value)
 	
 func PrintCurStage(value: int):
-	print(str(stageInfo.notes[value][0]) + " " +
-	str(stageInfo.notes[value][1]) + " " +
-	str(stageInfo.notes[value][2]) + " " +
-	str(stageInfo.notes[value][3]) + " " +
-	str(stageInfo.notes[value][4]))
+	hand.PrintStage(value)
 
 #todo: 키 입력도 플레이어가 할 수 있게 해줘야 한다.
 #todo: 실제 게임 로직을 짤 땐, FSM으로 현재 시작 대기 상태인지, 게임진행상태인지, 종료상태인지 구분해야함
