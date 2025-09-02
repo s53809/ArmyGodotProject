@@ -37,6 +37,7 @@ func PlayerKeyUp(num: int):
 # ---------- MainGameFunc ---------
 func ClearEvent():
 	if !_isStarted: return
+	_curStep = 0 #이건 임시로 해둔 것
 	emit_signal("Clear")
 	_isStarted = false
 
