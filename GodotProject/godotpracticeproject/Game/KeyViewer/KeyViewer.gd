@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var FingerIn: Texture2D
+@export var FingerOut: Texture2D
+
 var _childs: Array
 
 func _ready():
@@ -23,7 +26,6 @@ func CheckInput():
 	if Input.is_action_just_released("finger_5"): ColorChange(4, false)
 	
 func ColorChange(index: int, isKeyPressed: bool):
-	var c: Color
-	if isKeyPressed: c = Color(0, 0, 0)
-	else: c = Color(1, 1, 1)
-	_childs[index].self_modulate = c
+	if isKeyPressed: _childs[index].texture = FingerIn
+	else: _childs[index].texture = FingerOut
+	

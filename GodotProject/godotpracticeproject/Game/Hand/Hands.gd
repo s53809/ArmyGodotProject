@@ -1,6 +1,6 @@
 extends Node2D
 
-var hand = preload("res://Prefabs/hand.tscn")
+var hand = preload("res://Game/Hand/hand.tscn")
 var handArr = []
 
 func SetView(pNotes: Array):
@@ -11,7 +11,7 @@ func SetView(pNotes: Array):
 		handArr[i].Setup(pNotes[i])
 
 func PrintStage(value: int):
-	for i in range(value - 1):
+	for i in range(value):
 		handArr[i].position.y = (40 * i) - (40 * value)
 		handArr[i].modulate = Color(handArr[i].modulate, 0)
 		
