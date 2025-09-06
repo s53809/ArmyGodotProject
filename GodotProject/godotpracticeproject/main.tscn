@@ -1,10 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://de1632awdahvk"]
+[gd_scene load_steps=5 format=3 uid="uid://de1632awdahvk"]
 
 [ext_resource type="Script" uid="uid://cn5igc36myfqi" path="res://Scripts/MainGameTest.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c7kkjnsi7bn22" path="res://Scripts/Hands.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://1aa0x88mpmfb" path="res://Resources/WhiteSquare.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://enb8mumd0dx" path="res://KeyViewer.gd" id="4_lquwl"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Tester" type="Node2D" parent="."]
+[node name="Tester" type="Node2D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("1_ig7tw")
+hand = NodePath("../Hands")
+
+[node name="Hands" type="Node2D" parent="."]
+position = Vector2(0, -160)
+script = ExtResource("2_h2yge")
+
+[node name="Line" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(0, -180)
+scale = Vector2(1.5, 0.03)
+texture = ExtResource("4_1bvp3")
+
+[node name="KeyViewer" type="Node2D" parent="."]
+position = Vector2(0, -200)
+script = ExtResource("4_lquwl")
+
+[node name="Finger_1" type="Sprite2D" parent="KeyViewer"]
+position = Vector2(-70, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_1bvp3")
+
+[node name="Finger_2" type="Sprite2D" parent="KeyViewer"]
+position = Vector2(-35, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_1bvp3")
+
+[node name="Finger_3" type="Sprite2D" parent="KeyViewer"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_1bvp3")
+
+[node name="Finger_4" type="Sprite2D" parent="KeyViewer"]
+position = Vector2(35, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_1bvp3")
+
+[node name="Finger_5" type="Sprite2D" parent="KeyViewer"]
+position = Vector2(70, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_1bvp3")
