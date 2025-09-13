@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://de1632awdahvk"]
+[gd_scene load_steps=8 format=3 uid="uid://de1632awdahvk"]
 
+[ext_resource type="PackedScene" uid="uid://bqnb1br5gnk84" path="res://MainGameUI.tscn" id="1_272bh"]
 [ext_resource type="Script" uid="uid://cn5igc36myfqi" path="res://Scripts/MainGameTest.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://c7kkjnsi7bn22" path="res://Game/Hand/Hands.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://1aa0x88mpmfb" path="res://Resources/WhiteSquare.png" id="4_1bvp3"]
@@ -9,48 +10,58 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_272bh")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="Tester" type="Node2D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("1_ig7tw")
-hand = NodePath("../Hands")
+hand = NodePath("../GameView/Hands")
 
-[node name="Hands" type="Node2D" parent="."]
-position = Vector2(0, -160)
+[node name="GameView" type="Node2D" parent="."]
+position = Vector2(361, 283)
+scale = Vector2(1.5, 1.5)
+
+[node name="Hands" type="Node2D" parent="GameView"]
+position = Vector2(1, 0)
 script = ExtResource("2_h2yge")
+_alphaStair = [1.0, 0.7, 0.6, 0.5, 0.1]
 
-[node name="Line" type="Sprite2D" parent="."]
+[node name="Line" type="Sprite2D" parent="GameView"]
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(0, -180)
+position = Vector2(1, -20)
 scale = Vector2(1.5, 0.03)
 texture = ExtResource("4_1bvp3")
 
-[node name="KeyViewer" type="Node2D" parent="."]
-position = Vector2(0, -200)
+[node name="KeyViewer" type="Node2D" parent="GameView"]
+position = Vector2(1.33333, -40)
 script = ExtResource("4_lquwl")
 FingerIn = ExtResource("5_7mycd")
 FingerOut = ExtResource("5_lquwl")
 
-[node name="Finger_1" type="Sprite2D" parent="KeyViewer"]
+[node name="Finger_1" type="Sprite2D" parent="GameView/KeyViewer"]
 position = Vector2(-70, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_lquwl")
 
-[node name="Finger_2" type="Sprite2D" parent="KeyViewer"]
+[node name="Finger_2" type="Sprite2D" parent="GameView/KeyViewer"]
 position = Vector2(-35, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_lquwl")
 
-[node name="Finger_3" type="Sprite2D" parent="KeyViewer"]
+[node name="Finger_3" type="Sprite2D" parent="GameView/KeyViewer"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_lquwl")
 
-[node name="Finger_4" type="Sprite2D" parent="KeyViewer"]
+[node name="Finger_4" type="Sprite2D" parent="GameView/KeyViewer"]
 position = Vector2(35, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_lquwl")
 
-[node name="Finger_5" type="Sprite2D" parent="KeyViewer"]
+[node name="Finger_5" type="Sprite2D" parent="GameView/KeyViewer"]
 position = Vector2(70, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_lquwl")

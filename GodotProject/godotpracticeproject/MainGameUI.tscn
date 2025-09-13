@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqnb1br5gnk84"]
+
+[ext_resource type="FontFile" uid="uid://b3c30cjc60rjh" path="res://Fonts/KoPubWorld Dotum Medium.ttf" id="1_lic8b"]
+[ext_resource type="FontFile" uid="uid://cmq7tplpumrf8" path="res://Fonts/KoPubWorld Dotum Light.ttf" id="2_qh33i"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -428.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Space" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lic8b")
+text = "겹계단"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemainTime" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lic8b")
+theme_override_font_sizes/font_size = 30
+text = "4.97s"
+horizontal_alignment = 1
+
+[node name="Space2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="GameTitle2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.125911, 0.125911, 0.125911, 1)
+theme_override_fonts/font = ExtResource("2_qh33i")
+theme_override_font_sizes/font_size = 18
+text = "아래 줄에 있는 상태로 손가락을 움직여보세요."
+horizontal_alignment = 1
+vertical_alignment = 1
