@@ -1,13 +1,14 @@
 extends Node2D
 
 @export var hand: Node2D
+@export var UI: Control
 
 var stageInfo: StageInfo
 var game: MainGame
 
 func _ready():
 	stageInfo = StageInfo.new()
-	stageInfo.title = "Test"
+	stageInfo.title = "겹계단"
 	stageInfo.notes = [
 		[true, false, true, false, false],
 		[false, true, false, true, false],
@@ -25,6 +26,11 @@ func _ready():
 	game.Success.connect(Success)
 	
 	hand.SetView(stageInfo.notes)
+	
+	UI.SetUI(stageInfo.title)
+	game.InputFirstNote.connect(UI.StartGame)
+	game.Fail.connect(UI.Failed)
+	game.Clear.connect(UI.Clear)
 
 func _process(delta: float):
 	CheckInput()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqnb1br5gnk84"]
+[gd_scene load_steps=4 format=3 uid="uid://bqnb1br5gnk84"]
 
+[ext_resource type="Script" uid="uid://cpa2cdnynlndg" path="res://Game/UI/MainGameUI.gd" id="1_6rcg7"]
 [ext_resource type="FontFile" uid="uid://b3c30cjc60rjh" path="res://Fonts/KoPubWorld Dotum Medium.ttf" id="1_lic8b"]
 [ext_resource type="FontFile" uid="uid://cmq7tplpumrf8" path="res://Fonts/KoPubWorld Dotum Light.ttf" id="2_qh33i"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6rcg7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -49,7 +51,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="GameTitle2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.125911, 0.125911, 0.125911, 1)
 theme_override_fonts/font = ExtResource("2_qh33i")

@@ -23,6 +23,7 @@ func _init(pStageInfo: StageInfo):
 signal Clear()
 signal Fail()
 signal Success(nextStep: int)
+signal InputFirstNote()
 
 # --------- Callback ---------
 func PlayerKeyDown(num: int):
@@ -62,4 +63,5 @@ func Update():
 		if _curStageInfo.notes.size() <= _curStep + 1:
 			ClearEvent()
 		else:
+			if _curStep == 0: emit_signal("InputFirstNote")
 			SuccessEvent()
