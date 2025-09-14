@@ -1,10 +1,11 @@
 extends Node2D
 
 @export var hand: Node2D
-@export var UI: Control
 
 var stageInfo: StageInfo
 var game: MainGame
+
+signal Standby(pStageInfo: StageInfo)
 
 func _ready():
 	stageInfo = StageInfo.new()
@@ -25,16 +26,13 @@ func _ready():
 	game.Fail.connect(Fail)
 	game.Success.connect(Success)
 	
-	hand.SetView(stageInfo.notes)
+	emit_signal("Standby", stageInfo)
 	
-	UI.SetUI(stageInfo.title)
-	game.InputFirstNote.connect(UI.StartGame)
-	game.Fail.connect(UI.Failed)
-	game.Clear.connect(UI.Clear)
+	hand.SetView(stageInfo.notes)
 
 func _process(delta: float):
 	CheckInput()
-	game.Update()
+	game.Update(delta)
 	
 	if !game._isStarted and game._playerInput[0] and game._playerInput[1] and game._playerInput[2] and game._playerInput[3] and game._playerInput[4]:
 		game.Start()

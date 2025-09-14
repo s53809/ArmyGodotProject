@@ -12,15 +12,15 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("1_272bh")]
+[node name="UI" parent="CanvasLayer" node_paths=PackedStringArray("_gameDriver") instance=ExtResource("1_272bh")]
+_gameDriver = NodePath("../../Tester")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Tester" type="Node2D" parent="." node_paths=PackedStringArray("hand", "UI")]
+[node name="Tester" type="Node2D" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("1_ig7tw")
 hand = NodePath("../GameView/Hands")
-UI = NodePath("../CanvasLayer/UI")
 
 [node name="GameView" type="Node2D" parent="."]
 position = Vector2(361, 283)

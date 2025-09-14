@@ -1,22 +1,26 @@
 extends Control
 
+# -------- local --------
 var _gameTitle : Label
 var _remainTime : Label
 var _description : Label
 
 var _vBoxCon : Control
 
-var _timer: float = 0
-var _isTimerStarted: bool = false
+var _timer: float = 0: set = _PrintTime
 
-# -------- public method --------
+# -------- MainGame ------
+
+@export var _gameDriver: Node2D
+
+# -------- method --------
 
 func SetUI(title: String, desc: String = "아래 줄에 있는 상태로 손가락을 움직여보세요."):
 	_gameTitle.text = title
 	_description.text = desc
-	PrintTime(0)
+	_PrintTime(0)
 	
-func PrintTime(time: float):
+func _PrintTime(time: float):
 	_remainTime.text = "%.2fs" % time
 
 # --------- flow ------------
@@ -27,22 +31,13 @@ func _ready() -> void:
 	_gameTitle = _vBoxCon.get_child(1)
 	_remainTime = _vBoxCon.get_child(2)
 	_description = _vBoxCon.get_child(4)
-
-func _process(delta: float) -> void:
-	if !_isTimerStarted: return
-	_timer += delta
-	PrintTime(_timer)
 	
 # -------- event ----------
 func StartGame():
-	_isTimerStarted = true
-	_timer = 0
 	_description.text = "아래 줄에 있는 상태로 손가락을 움직여보세요."
 
 func Failed():
-	_isTimerStarted = false
-	_timer = 0
 	_description.text = "실패하셨군요!"
 	
 func Clear():
-	_isTimerStarted = false
+	_description.text = "Hello!"

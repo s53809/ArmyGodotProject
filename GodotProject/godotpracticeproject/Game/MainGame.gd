@@ -7,6 +7,8 @@ var _curStep: int
 
 var _isStarted: bool
 
+var remainTime: float
+
 # MainGame 객체가 생성되면 해야할 것
 # Clear, Fail, Success 이벤트 구독하기
 # 입력 함수 호출시키기
@@ -45,6 +47,7 @@ func ClearEvent():
 func FailedEvent():
 	if !_isStarted: return
 	_curStep = 0
+	remainTime = _curStageInfo.limitTime
 	emit_signal("Fail")
 	_isStarted = false
 	
@@ -57,8 +60,9 @@ func SuccessEvent():
 func Start():
 	_isStarted = true
 
-func Update():
+func Update(delta: float):
 	if !_isStarted: return
+	remainTime -= delta
 	if _playerInput == _curStageInfo.notes[_curStep]:
 		if _curStageInfo.notes.size() <= _curStep + 1:
 			ClearEvent()
