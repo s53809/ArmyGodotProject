@@ -15,21 +15,18 @@
 [node name="UI" parent="CanvasLayer" node_paths=PackedStringArray("_gameDriver") instance=ExtResource("1_272bh")]
 _gameDriver = NodePath("../../Tester")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
-[node name="Tester" type="Node2D" parent="." node_paths=PackedStringArray("hand")]
+[node name="Tester" type="Node2D" parent="."]
 script = ExtResource("1_ig7tw")
-hand = NodePath("../GameView/Hands")
 
 [node name="GameView" type="Node2D" parent="."]
 position = Vector2(361, 283)
 scale = Vector2(1.5, 1.5)
 
-[node name="Hands" type="Node2D" parent="GameView"]
+[node name="Hands" type="Node2D" parent="GameView" node_paths=PackedStringArray("_gameDriver")]
 position = Vector2(1, 0)
 script = ExtResource("2_h2yge")
 _alphaStair = Array[float]([1.0, 0.7, 0.6, 0.5, 0.1])
+_gameDriver = NodePath("../../Tester")
 
 [node name="Line" type="Sprite2D" parent="GameView"]
 modulate = Color(1, 1, 1, 0.498039)
@@ -66,3 +63,6 @@ texture = ExtResource("5_lquwl")
 position = Vector2(70, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_lquwl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

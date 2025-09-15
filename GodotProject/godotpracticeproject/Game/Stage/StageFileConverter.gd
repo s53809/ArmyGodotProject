@@ -22,6 +22,8 @@ func ReadStageFile(stageIndex: int) -> StageInfo:
 		notes.append(boolArray)
 		index += 1
 	
+	stageInfo.notes = notes
+	
 	index += 1
 	var splitedRanks: PackedStringArray = lines[index].split(' ')
 	for temp in splitedRanks:

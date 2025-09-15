@@ -6,6 +6,7 @@ var _playerInput = Array([], TYPE_BOOL, "", null)
 var _curStep: int
 
 var _isStarted: bool
+var _isInputFirstNote: bool
 
 var remainTime: float
 
@@ -20,6 +21,7 @@ func _init(pStageInfo: StageInfo):
 	_curStep = 0
 	_playerInput = [false, false, false, false, false]
 	_isStarted = false
+	_isInputFirstNote = false
 
 # ---------- Subscribe -----------
 signal Clear()
@@ -43,6 +45,7 @@ func ClearEvent():
 	_curStep = 0 #이건 임시로 해둔 것
 	emit_signal("Clear")
 	_isStarted = false
+	_isInputFirstNote = false
 
 func FailedEvent():
 	if !_isStarted: return
@@ -50,6 +53,7 @@ func FailedEvent():
 	remainTime = _curStageInfo.limitTime
 	emit_signal("Fail")
 	_isStarted = false
+	_isInputFirstNote = false
 	
 func SuccessEvent():
 	if !_isStarted: return
@@ -59,13 +63,14 @@ func SuccessEvent():
 # ---------- Flow ------------
 func Start():
 	_isStarted = true
+	remainTime = _curStageInfo.limitTime
 
 func Update(delta: float):
 	if !_isStarted: return
-	remainTime -= delta
+	if _isInputFirstNote: remainTime -= delta
 	if _playerInput == _curStageInfo.notes[_curStep]:
 		if _curStageInfo.notes.size() <= _curStep + 1:
 			ClearEvent()
 		else:
-			if _curStep == 0: emit_signal("InputFirstNote")
+			if _curStep == 0: _isInputFirstNote = true
 			SuccessEvent()

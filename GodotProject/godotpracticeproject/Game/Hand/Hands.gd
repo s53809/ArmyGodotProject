@@ -4,6 +4,15 @@ var hand = preload("res://Game/Hand/hand.tscn")
 var handArr = []
 
 @export var _alphaStair: Array[float]
+@export var _gameDriver: Node2D
+
+func _enter_tree() -> void:
+	_gameDriver.Standby.connect(GetStageInfo)
+	_gameDriver.PrintStage.connect(PrintStage)
+	
+func GetStageInfo(value: StageInfo):
+	_gameDriver.game.Clear.connect(Clear_Test)
+	SetView(value.notes)
 
 func MovePositionY(pos: float, obj: Node2D):
 	var tween = get_tree().create_tween()

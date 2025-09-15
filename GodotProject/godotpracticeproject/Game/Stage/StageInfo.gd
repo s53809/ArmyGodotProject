@@ -1,7 +1,7 @@
 class_name StageInfo
 
 var title: String
-var notes = Array(Array([], TYPE_BOOL, "", null))
+var notes: Array
 var ranks: Array[float] # S A B
 var limitTime: float # Sec
 

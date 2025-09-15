@@ -52,6 +52,7 @@ func GetStageInfo(pStageInfo: StageInfo):
 	_gameDriver.game.Fail.connect(Failed)
 	
 func StartGame():
+	_description.text = "아래 줄에 있는 상태로 손가락을 움직여보세요."
 	_isGameStarted = true
 
 func Failed():
@@ -62,10 +63,9 @@ func Failed():
 func Clear():
 	_isGameStarted = false
 	# 임시 코드
-	var ranks = "SABC"
+	var ranks = "CBAS"
 	for i in range(3):
-		if _stageInfo.ranks[i] > _timer:
-			_description.text = "당신의 랭크는 %c 입니다!" % ranks[i]
-			break
-	if _stageInfo.ranks[2] < _timer:
-		_description.text = "당신의 랭크는 %c 입니다!" % ranks[3]
+		if _stageInfo.ranks[i] <= _timer:
+			_description.text = "당신의 랭크는 %c 입니다!" % ranks[i + 1]
+	if _stageInfo.ranks[0] > _timer:
+		_description.text = "당신의 랭크는 %c 입니다!" % ranks[0]

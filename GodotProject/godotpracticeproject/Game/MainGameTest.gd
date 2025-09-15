@@ -1,25 +1,21 @@
 extends Node2D
 
-@export var hand: Node2D
-
 var stageInfo: StageInfo
 var game: MainGame
 
 signal Standby(pStageInfo: StageInfo)
 signal GameStart()
+signal PrintStage(value: int)
 
 func _ready():
 	var conv: StageFileConverter = StageFileConverter.new()
-	stageInfo = conv.ReadStageFile(1)
+	stageInfo = conv.ReadStageFile(2)
 	game = MainGame.new(stageInfo)
 	game.Clear.connect(Clear)
 	game.Fail.connect(Fail)
 	game.Success.connect(Success)
 	
 	emit_signal("Standby", stageInfo)
-	
-	hand.SetView(stageInfo.notes)
-
 func _process(delta: float):
 	CheckInput()
 	game.Update(delta)
@@ -44,7 +40,6 @@ func CheckInput():
 
 func Clear():
 	print("당신은 클리어하다")
-	hand.Clear_Test()
 	
 func Fail():
 	print("당신은 실패하다")
@@ -54,7 +49,7 @@ func Success(value: int):
 	PrintCurStage(value)
 	
 func PrintCurStage(value: int):
-	hand.PrintStage(value)
+	emit_signal("PrintStage", value)
 
 #todo: 키 입력도 플레이어가 할 수 있게 해줘야 한다.
 #todo: 실제 게임 로직을 짤 땐, FSM으로 현재 시작 대기 상태인지, 게임진행상태인지, 종료상태인지 구분해야함
