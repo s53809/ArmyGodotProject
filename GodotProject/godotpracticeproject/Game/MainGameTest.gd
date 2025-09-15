@@ -6,21 +6,11 @@ var stageInfo: StageInfo
 var game: MainGame
 
 signal Standby(pStageInfo: StageInfo)
+signal GameStart()
 
 func _ready():
-	stageInfo = StageInfo.new()
-	stageInfo.title = "겹계단"
-	stageInfo.notes = [
-		[true, false, true, false, false],
-		[false, true, false, true, false],
-		[false, false, true, false, true],
-		[false, true, false, true, false],
-		[true, false, true, false, false],
-		[false, true, false, true, false],
-		[false, false, true, false, true],
-		[false, true, false, true, false],
-		[true, false, true, false, false],
-		]
+	var conv: StageFileConverter = StageFileConverter.new()
+	stageInfo = conv.ReadStageFile(1)
 	game = MainGame.new(stageInfo)
 	game.Clear.connect(Clear)
 	game.Fail.connect(Fail)
@@ -36,6 +26,7 @@ func _process(delta: float):
 	
 	if !game._isStarted and game._playerInput[0] and game._playerInput[1] and game._playerInput[2] and game._playerInput[3] and game._playerInput[4]:
 		game.Start()
+		emit_signal("GameStart")
 		PrintCurStage(0)
 	
 func CheckInput():
