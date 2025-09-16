@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://oy71qdwlu177"]
+
+[ext_resource type="Script" uid="uid://csna301y8krj2" path="res://SceneManager/SceneManager.gd" id="1_mqdah"]
+[ext_resource type="PackedScene" uid="uid://de1632awdahvk" path="res://main.tscn" id="2_x7qrj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SceneManager" type="Node2D" parent="."]
+script = ExtResource("1_mqdah")
+StartScene = ExtResource("2_x7qrj")
