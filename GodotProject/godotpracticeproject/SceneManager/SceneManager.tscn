@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://oy71qdwlu177"]
 
 [ext_resource type="Script" uid="uid://csna301y8krj2" path="res://SceneManager/SceneManager.gd" id="1_mqdah"]
-[ext_resource type="PackedScene" uid="uid://de1632awdahvk" path="res://main.tscn" id="2_x7qrj"]
+[ext_resource type="PackedScene" uid="uid://de1632awdahvk" path="res://Game/main.tscn" id="2_x7qrj"]
 
 [node name="Node2D" type="Node2D"]
 
