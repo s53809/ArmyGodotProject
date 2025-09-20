@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc5ru5ruyiq1v"]
+
+[ext_resource type="FontFile" uid="uid://cu11tmub1d83g" path="res://Fonts/KoPubWorld Dotum Bold.ttf" id="1_hsqke"]
+[ext_resource type="Script" uid="uid://d35vtixu741ll" path="res://SelectStage/Stage/StageField.gd" id="1_x3r5t"]
+[ext_resource type="FontFile" uid="uid://cmq7tplpumrf8" path="res://Fonts/KoPubWorld Dotum Light.ttf" id="2_x3r5t"]
+
+[node name="StageField" type="VBoxContainer"]
+offset_left = 369.0
+offset_top = 291.0
+offset_right = 691.0
+offset_bottom = 356.0
+theme_override_constants/separation = -10
+script = ExtResource("1_x3r5t")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hsqke")
+theme_override_font_sizes/font_size = 28
+text = "1. 손 풀기"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_x3r5t")
+theme_override_font_sizes/font_size = 20
+text = "기록 없음"
+horizontal_alignment = 1
+vertical_alignment = 1

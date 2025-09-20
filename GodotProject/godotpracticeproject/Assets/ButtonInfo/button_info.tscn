@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://baccewtevlcsa"]
+
+[ext_resource type="Script" uid="uid://caslxa1xiurml" path="res://Assets/ButtonInfo/button_info.gd" id="1_p8uga"]
+[ext_resource type="Texture2D" uid="uid://caf1snecw02ir" path="res://Assets/Fingerout.png" id="2_vrfw3"]
+[ext_resource type="Texture2D" uid="uid://pfctamc2s0qg" path="res://Assets/FingerIn.png" id="3_yfpqd"]
+[ext_resource type="Texture2D" uid="uid://cu0gbkmbn1sbb" path="res://Assets/Square.png" id="4_23qea"]
+
+[node name="ButtonInfo" type="Node2D"]
+script = ExtResource("1_p8uga")
+FingerInAndOut = Array[Texture]([ExtResource("2_vrfw3"), ExtResource("3_yfpqd")])
+Finger1 = true
+Finger2 = true
+
+[node name="Outline" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.725, 0.225)
+texture = ExtResource("4_23qea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.2)
+texture = ExtResource("4_23qea")
+
+[node name="Finger" type="Sprite2D" parent="."]
+position = Vector2(-16.5, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_yfpqd")
+
+[node name="Finger2" type="Sprite2D" parent="."]
+position = Vector2(16.5, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_vrfw3")
+
+[node name="Finger3" type="Sprite2D" parent="."]
+position = Vector2(33, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_vrfw3")
+
+[node name="Finger4" type="Sprite2D" parent="."]
+position = Vector2(-33, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_yfpqd")
+
+[node name="Finger5" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_vrfw3")
